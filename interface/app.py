@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap5
+from scanner.sushi import Scanner
 
 app = Flask(__name__)
 Bootstrap5(app)
@@ -10,7 +11,14 @@ def home():
 
 @app.route("/test")
 def test():
-    return "Let's eat sushi!"
+    scanner = Scanner()
+    print("Welcome to Sushirov")
+    print("Please return the dishes on the tray")
+    scanner.initialize()
+
+    scanned_price = input()
+    scanner.add_item(scanned_price)
+    return scanned_price
 
 @app.route("/summary")
 def summary():
