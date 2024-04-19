@@ -25,7 +25,13 @@
     border: 10px solid #ba1c24; 
     padding: 10px; 
     border-radius: 25px;
+    z-index: 1;
     } 
+  
+  .top-layer{
+      position: fixed;
+      z-index: 5;
+  }
 
   a {
     font-weight: 500;
