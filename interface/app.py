@@ -12,5 +12,9 @@ def home():
 def test():
     return "Let's eat sushi!"
 
+@app.route("/summary")
+def summary():
+    return render_template("summary_page.html")
+
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port="8000", debug=True)
