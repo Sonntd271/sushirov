@@ -115,8 +115,8 @@ class Scanner:
 
 if __name__ == "__main__":
     scanner = Scanner()
-    print("Welcome to Bushido")
-    print("Please return the dished on the tray")
+    print("Welcome to Sushirov")
+    print("Please return the dishes tp the tray")
     scanner.initialize()
     while True:
         scanned_price = input()
