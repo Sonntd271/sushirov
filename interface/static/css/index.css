@@ -16,10 +16,6 @@
   td {
     text-align: center;
   }
-
-  table { border: none; border-collapse: collapse; }
-  table tr { border-top: none; }
-  table tr:last-child { border-top: 10px solid #ba1c24; }
   
   .center { 
     position: absolute; 
@@ -28,12 +24,12 @@
     transform: translate(-50%, -50%); 
     border: 10px solid #ba1c24; 
     padding: 10px; 
-    border-radius: 10px;
+    border-radius: 25px;
     z-index: 1;
     } 
   
-  .top-layer{
-      position: relative;
+  .top-layer {
+      position: fixed;
       z-index: 5;
   }
 
