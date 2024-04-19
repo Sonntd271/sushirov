@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap5
 from scanner.sushi import Scanner
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 Bootstrap5(app)
 
 @app.route("/")
