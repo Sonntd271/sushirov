@@ -1,6 +1,6 @@
 from gpiozero import Button, LED
 
-FILE_PATH = "registered.txt"
+FILE_PATH = "./registered.txt"
 
 # -----------------------------------------------------
 class Scanner:
