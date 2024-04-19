@@ -3,7 +3,6 @@ from gpiozero import Button, LED
 FILE_PATH = "registered.txt"
 
 # -----------------------------------------------------
-
 class Scanner:
     def __init__(self) -> None:
         # Declare LEDs
@@ -114,7 +113,7 @@ class Scanner:
         self.total_count = 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     scanner = Scanner()
     print("Welcome to Bushido")
     print("Please return the dished on the tray")
