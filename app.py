@@ -6,7 +6,7 @@ FILE_PATH = "static/assets/registered.txt"
 app = Flask(__name__, static_url_path='/static')
 app.config["SECRET_KEY"] = "hello_readers"
 
-summary_dict = {
+DEFAULT_SUMMARY_DICT = {
     "count": {
         "red": 0,
         "silver": 0,
@@ -21,8 +21,8 @@ summary_dict = {
 def home():
     return render_template("index.html")
 
-@app.route("/test")
-def test():
+@app.route("/scan")
+def scan():
     print(f"Testing...\nOpening file from path: {FILE_PATH}")
     scanner = Scanner(fp=FILE_PATH, testing=True)
     scanned_price = ""
@@ -48,6 +48,11 @@ def summary():
 @app.route("/payment")
 def payment():
     return render_template("payment.html")
+
+@app.route("/reset")
+def reset():
+    session["summary_dict"] = DEFAULT_SUMMARY_DICT
+    return redirect(url_for("summary"))
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port="8000", debug=True)
