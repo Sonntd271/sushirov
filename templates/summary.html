@@ -4,9 +4,14 @@
 
 {% block content %}
 
+<<<<<<< HEAD
 <h1>Summary</h1>
 <img src="/static/images/sushi1.png" class="top-layer" align="left"  width="25%"/>
 <img src="/static/images/sushi2.png" class="top-layer" align="right" width="25%"/>
+=======
+<img src="{{ url_for('static', filename='assets/images/sushi1.png') }}" class="top-layer" align="left"  width="25%"/>
+<img src="{{ url_for('static', filename='assets/images/sushi2.png') }}" class="top-layer" align="right" width="25%"/>
+>>>>>>> 7ffd4d31ac7db901212eca93a3da966b53387fe3
 <table class="center" height="80%" x width="80%">
     <tr>
       <th>Order List</th>
@@ -14,23 +19,23 @@
     </tr>
     <tr>
       <th>Red Plate</th>
-      <td>0 Baht</td>
+      <td>{{ red }} Baht</td>
     </tr>
     <tr>
         <th>Silver Plate</th>
-        <td>0 Baht</td>
+        <td>{{ silver }} Baht</td>
     </tr>
     <tr>
         <th>Gold Plate</th>
-        <td>0 Baht</td>
+        <td>{{ gold }} Baht</td>
     </tr>
     <tr>
         <th>Black Plate</th>
-        <td>0 Baht</td>
+        <td>{{ black }} Baht</td>
     </tr>
     <tr>
         <th>Total Price: </th>
-        <th>0 Baht</th>
+        <th>{{ total }} Baht</th>
     </tr>
   </table>
 {% endblock %}
