@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block title %}Instruction!{% endblock %}
+
+{% block content %}
+
+<div class="rcorners1 center-40 red-border" style="width:50%; height:45%;box-shadow: 10px 10px lightblue;">
+    <p class="center-40" style="font-family:verdana; font-size:200%">Please place the sushi plates on the tray to begin the payment process.</p>
+</div>
+
+<img src="{{ url_for('static', filename='assets/images/icon3.jpg') }}" class="bottom-left img-hor" align="right-top"   width="25%"/>
+<img src="{{ url_for('static', filename='assets/images/icon3.jpg') }}" class="bottom-right" align="right-top"   width="25%"/>
+{% endblock %}

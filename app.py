@@ -62,5 +62,9 @@ def loading():
 def thankyou():
     return render_template("thankyou.html")
 
+@app.route("/instruction")
+def instruction():
+    return render_template("instruction.html")
+
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port="8000", debug=True)
