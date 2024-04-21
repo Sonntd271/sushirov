@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 
-
 {% block title %}Payment!{% endblock %}
+
+{% block styles %}   
+  <style>
+    button {
+        height:150px;
+        width:150px;
+        background-color: white;
+    }
+  </style>
+{% endblock %}
 
 {% block content %}
 
@@ -11,16 +20,14 @@
     <p class="center-40" style="font-family:verdana; font-size:100%">Do you want to <br> begin the payment process?</p>
 </div>
 
-<div class="buttons center-60" style="border:0">
+<button class="shadow" style="position: absolute; left: 10%; top: 35%; border-radius: 25px; ">
+    <b style="font-size: 150% ">Yes</b>
+</button>
+<button class="shadow" style="position: absolute; right: 10%; top: 35%; border-radius: 25px; ">
+    <b style="font-size: 150% ">No</b>
+</button>
 
-    <div class="action_btn">
-
-    <button name="submit" class="action_btn yes" type="submit" value="Save">Yes</button>
-    <button name="submit" class="action_btn no" type="submit" value="Cancel">No</button>
-
-    </div>
-</div>
-<img src="{{ url_for('static', filename='assets/images/icon1.jpg') }}" class="bottom-left img-hor" align="right-top"   width="35%"/>
-<img src="{{ url_for('static', filename='assets/images/icon1.jpg') }}" class="bottom-right" align="right-top"   width="35%"/>
+<img src="{{ url_for('static', filename='assets/images/icon1.png') }}" class="bottom-left img-hor" align="right-top"   width="35%"/>
+<img src="{{ url_for('static', filename='assets/images/icon1.png') }}" class="bottom-right" align="right-top"   width="35%"/>
 
 {% endblock %}

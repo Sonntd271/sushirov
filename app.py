@@ -66,5 +66,9 @@ def thankyou():
 def instruction():
     return render_template("instruction.html")
 
+@app.route("/main")
+def main():
+    return render_template("main.html")
+
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port="8000", debug=True)

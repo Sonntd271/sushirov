@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block styles %}   
+  <style>
+    button {
+        height:150px;
+        width:150px;
+        background-color: white;
+    }
+    .scan-button {
+        height:70px;
+        width:200px;
+        background-color: white;
+    }
+  </style>
+{% endblock %}
+
+{% block title %}Payment!{% endblock %}
+
+{% block content %}
+
+<h1 style="position: absolute; left:35%; top: 5%; font-size: 600%;">SuShiRo(V)</h1>
+<b class="shadow" style="position: absolute; left:35%; top: 35%; border-radius: 25px; font-size: 150% ">ราคา: 9999 บาท</b>
+<b class="shadow" style="position: absolute; left:65%; top: 35%; border-radius: 25px; font-size: 150% ">จำนวน: 999 จาน</b>
+
+<button style="position: absolute; left: 10%; top: 25%;">
+    <img src="{{ url_for('static', filename='assets/images/sushi3.png') }}"  width="100%"  style="object-fit: contain;"/>
+    <b>ดูรายการที่สั่ง</b>
+</button>
+
+<button style="position: absolute; left: 10%; top: 50%;">
+    <img src="{{ url_for('static', filename='assets/images/check.png') }}" width="100%" style="object-fit: contain;"/>
+    <b>ชำระเงิน</b>
+</button>
+
+<button style="position: absolute; left: 10%; top: 75%;">
+    <img src="{{ url_for('static', filename='assets/images/call-out.png') }}" width="100%" style="object-fit: contain;"/>
+    <b>เรียกพนักงาน</b>
+</button>
+
+<img src="{{ url_for('static', filename='assets/images/group-image.png') }}" width="60%" style="object-fit: contain; position: absolute; left: 25%; top: 25%;"/>
+
+<button class="shadow scan-button" style="position: absolute; left: 50%; top: 75%; border-radius: 25px; ">
+    <b style="font-size: 150% ">Scan</b>
+</button>
+
+{% endblock %}
