@@ -51,6 +51,15 @@
     z-index: 1;
   }
 
+  .img-hor {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
   .top-layer {
       position: relative;
       z-index: 5;
@@ -60,6 +69,12 @@
     position: absolute;
     bottom: 0px; 
     right: 0px
+  }
+
+  .bottom-left {
+    position: absolute;
+    bottom: 0px; 
+    left: 0px
   }
 
   .textbox {
