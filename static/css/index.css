@@ -50,6 +50,13 @@
     transform: translate(-50%, -50%); 
     z-index: 1;
   }
+  .center-80 {
+    position: absolute; 
+    left: 50%; 
+    top: 85%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1;
+  }
 
   .img-hor {
     -moz-transform: scaleX(-1);

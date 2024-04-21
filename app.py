@@ -54,5 +54,9 @@ def reset():
     session["summary_dict"] = DEFAULT_SUMMARY_DICT
     return redirect(url_for("summary"))
 
+@app.route("/loading")
+def loading():
+    return render_template("loading.html")
+
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port="8000", debug=True)
