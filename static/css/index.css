@@ -20,18 +20,37 @@
   table { border: none; border-collapse: collapse; }
   table tr { border-top: none; }
   table tr:last-child { border-top: 10px solid #ba1c24; }
+
+  .red-border {
+    border: 10px solid #ba1c24; 
+    padding: 10px; 
+    border-radius: 10px;
+  }
   
-  .center { 
+  .center-40 { 
+    position: absolute; 
+    left: 50%; 
+    top: 45%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1;
+    } 
+
+  .center-50 {
     position: absolute; 
     left: 50%; 
     top: 55%; 
     transform: translate(-50%, -50%); 
-    border: 10px solid #ba1c24; 
-    padding: 10px; 
-    border-radius: 10px;
     z-index: 1;
-    } 
+  }
   
+  .center-60 {
+    position: absolute; 
+    left: 50%; 
+    top: 65%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1;
+  }
+
   .top-layer {
       position: relative;
       z-index: 5;

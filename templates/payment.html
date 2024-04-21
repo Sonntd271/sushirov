@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 
+
 {% block title %}Welcome!{% endblock %}
 
 {% block content %}
 
 <h1>Payment</h1>
-<div style="background-image: url_for('static', filename='assets/images/icon1.jpg')">
-    <p>Do you want to begin the payment process?</p>
+<div>
+    <img src="{{ url_for('static', filename='assets/images/textbox.png') }}" class="center-40" width="40%" style="padding-top: 2.5%;"/>
+    <p class="center-40" style="font-family:verdana; font-size:100%">Do you want to <br> begin the payment process?</p>
+</div>
 
-<div class="buttons center" style="border:0">
+<div class="buttons center-60" style="border:0">
 
     <div class="action_btn">
 
-    <button name="submit" class="action_btn submit" type="submit" value="Save">Save</button>
-    <button name="submit" class="action_btn cancel" type="submit" value="Cancel">Cancel</button>
+    <button name="submit" class="action_btn yes" type="submit" value="Save">Yes</button>
+    <button name="submit" class="action_btn no" type="submit" value="Cancel">No</button>
 
     </div>
 </div>
