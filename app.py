@@ -19,7 +19,11 @@ DEFAULT_SUMMARY_DICT = {
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    summary_dict = session.get("summary_dict", {})
+    total = summary_dict.get("total_price", 0)
+    plate_count = sum(dict(summary_dict.get("count", {})).values())
+    print(total, plate_count)
+    return render_template("home.html", total=total, count=plate_count)
 
 @app.route("/scan")
 def scan():
@@ -54,17 +58,17 @@ def reset():
     session["summary_dict"] = DEFAULT_SUMMARY_DICT
     return redirect(url_for("summary"))
 
-@app.route("/loading")
-def loading():
-    return render_template("loading.html")
-
 @app.route("/thankyou")
 def thankyou():
     return render_template("thankyou.html")
 
-@app.route("/instruction")
-def instruction():
-    return render_template("instruction.html")
+# @app.route("/loading")
+# def loading():
+#     return render_template("loading.html")
+
+# @app.route("/instruction")
+# def instruction():
+#     return render_template("instruction.html")
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port="8000", debug=True)

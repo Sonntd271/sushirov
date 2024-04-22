@@ -1,33 +1,58 @@
-{% extends "base.html" %}
-
-{% block title %}Payment!{% endblock %}
-
-{% block styles %}   
-  <style>
-    button {
-        height:150px;
-        width:150px;
-        background-color: white;
-    }
-  </style>
-{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Payment!{% endblock %} {% block
+styles %}
+<style>
+	button {
+		height: 150px;
+		width: 150px;
+		background-color: white;
+	}
+</style>
+{% endblock %} {% block content %}
 
 <h1>Payment</h1>
 <div>
-    <img src="{{ url_for('static', filename='assets/images/textbox.png') }}" class="center-40" width="40%" style="padding-top: 2.5%;"/>
-    <p class="center-40" style="font-family:verdana; font-size:100%">Do you want to <br> begin the payment process?</p>
+	<img
+		src="{{ url_for('static', filename='assets/images/textbox.png') }}"
+		class="center-40"
+		width="40%"
+		style="padding-top: 2.5%"
+	/>
+	<p class="center-40" style="font-family: verdana; font-size: 100%">
+		Do you want to <br />
+		begin the payment process?
+	</p>
 </div>
 
-<button class="shadow" style="position: absolute; left: 10%; top: 35%; border-radius: 25px; ">
-    <b style="font-size: 150% ">Yes</b>
-</button>
-<button class="shadow" style="position: absolute; right: 10%; top: 35%; border-radius: 25px; ">
-    <b style="font-size: 150% ">No</b>
-</button>
+<a href="{{ url_for('thankyou') }}">
+	<button
+		class="shadow"
+		style="position: absolute; left: 10%; top: 35%; border-radius: 25px"
+	>
+		<b style="font-size: 150%">Yes</b>
+	</button>
+</a>
 
-<img src="{{ url_for('static', filename='assets/images/icon1.png') }}" class="bottom-left img-hor" align="right-top"   width="35%"/>
-<img src="{{ url_for('static', filename='assets/images/icon1.png') }}" class="bottom-right" align="right-top"   width="35%"/>
+<a href="{{ url_for('home') }}">
+	<button
+		class="shadow"
+		style="position: absolute; right: 10%; top: 35%; border-radius: 25px"
+	>
+		
+			<b style="font-size: 150%">No</b>
+	</button>
+</a>
+
+<img
+	src="{{ url_for('static', filename='assets/images/icon1.png') }}"
+	class="bottom-left img-hor"
+	align="right-top"
+	width="35%"
+/>
+<img
+	src="{{ url_for('static', filename='assets/images/icon1.png') }}"
+	class="bottom-right"
+	align="right-top"
+	width="35%"
+/>
 
 {% endblock %}

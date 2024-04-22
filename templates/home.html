@@ -18,22 +18,25 @@
 {% block title %}Payment!{% endblock %}
 
 {% block content %}
-
 <h1 style="position: absolute; left:35%; top: 5%; font-size: 600%;">SuShiRo(V)</h1>
-<b class="shadow" style="position: absolute; left:35%; top: 35%; border-radius: 25px; font-size: 150% ">ราคา: 9999 บาท</b>
-<b class="shadow" style="position: absolute; left:65%; top: 35%; border-radius: 25px; font-size: 150% ">จำนวน: 999 จาน</b>
+<b class="shadow" style="position: absolute; left:35%; top: 35%; border-radius: 25px; font-size: 150% ">ราคา: {{ total }} บาท</b>
+<b class="shadow" style="position: absolute; left:65%; top: 35%; border-radius: 25px; font-size: 150% ">จำนวน: {{ count }} จาน</b>
 
 <img style="position: absolute; right: 10%; top: 10%;" src="{{ url_for('static', filename='assets/images/profile.png') }}"  width="10%"  style="object-fit: contain;"/>
 
-<button style="position: absolute; left: 10%; top: 25%;">
-    <img src="{{ url_for('static', filename='assets/images/sushi3.png') }}"  width="100%"  style="object-fit: contain;"/>
-    <b>ดูรายการที่สั่ง</b>
-</button>
+<a href="{{ url_for('summary') }}">
+    <button style="position: absolute; left: 10%; top: 25%;">
+        <img src="{{ url_for('static', filename='assets/images/sushi3.png') }}"  width="100%"  style="object-fit: contain;"/>
+        <b>ดูรายการที่สั่ง</b>
+    </button>
+</a>
 
-<button style="position: absolute; left: 10%; top: 50%;">
-    <img src="{{ url_for('static', filename='assets/images/check.png') }}" width="100%" style="object-fit: contain;"/>
-    <b>ชำระเงิน</b>
-</button>
+<a href="{{ url_for('payment') }}">
+    <button style="position: absolute; left: 10%; top: 50%;">
+        <img src="{{ url_for('static', filename='assets/images/check.png') }}" width="100%" style="object-fit: contain;"/>
+        <b>ชำระเงิน</b>
+    </button>
+</a>
 
 <button style="position: absolute; left: 10%; top: 75%;">
     <img src="{{ url_for('static', filename='assets/images/call-out.png') }}" width="100%" style="object-fit: contain;"/>
@@ -42,8 +45,17 @@
 
 <img src="{{ url_for('static', filename='assets/images/group-image.png') }}" width="60%" style="object-fit: contain; position: absolute; left: 25%; top: 25%;"/>
 
-<button class="shadow scan-button" style="position: absolute; left: 50%; top: 75%; border-radius: 25px; ">
-    <b style="font-size: 150% ">Scan</b>
-</button>
-
+<a href="{{ url_for('scan') }}">
+    <button class="shadow scan-button" style="position: absolute; left: 50%; top: 75%; border-radius: 25px; ">
+        <b style="font-size: 150% ">Scan</b>
+    </button>
+</a>
 {% endblock %}
+
+<!-- {% block scripts %}
+<script>
+    function redirectToScan() {
+        window.location.replace("{{ url_for('scan') }}")
+    }
+</script>
+{% endblock %} -->
