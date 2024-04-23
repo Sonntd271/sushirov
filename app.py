@@ -29,10 +29,12 @@ def home():
 def scan():
     print(f"Testing...\nOpening file from path: {FILE_PATH}")
     scanner = Scanner(fp=FILE_PATH, testing=True)
-    scanned_price = ""
-    while scanned_price != "q":
-        scanned_price = input()
-        scanner.add_item(scanned_price)
+    rfid = ""
+    while rfid != "q":
+        rfid = input()
+        ok = scanner.add_item(rfid)
+        if not ok:
+            break
     session["summary_dict"] = scanner.summary_dict
     print(f"Data added to session: {session['summary_dict']}")
     return redirect(url_for("summary"))
@@ -56,7 +58,7 @@ def payment():
 @app.route("/reset")
 def reset():
     session["summary_dict"] = DEFAULT_SUMMARY_DICT
-    return redirect(url_for("summary"))
+    return redirect(url_for("home"))
 
 @app.route("/thankyou")
 def thankyou():
