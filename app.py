@@ -50,7 +50,8 @@ def scan():
     session["summary_dict"] = scanner.summary_dict
     print(f"Data added to session: {session['summary_dict']}")
     
-    # thread.join()
+    # Exit thread when white card is detected
+    thread.join()
 
     return redirect(url_for("summary"))
 

@@ -53,13 +53,13 @@ class Motor:
         
     def run_fwd(self):
         self.ena.on()
-        self.pul.blink(self.pulse_dur,self.pulse_dur)
+        self.pul.blink(self.pulse_dur, self.pulse_dur)
         self.dir.on()
         print("pass")
         
     def run_bwd(self):
         self.ena.on()
-        self.pul.blink(self.pulse_dur,self.pulse_dur)
+        self.pul.blink(self.pulse_dur, self.pulse_dur)
         self.dir.off()
         print("pass")
 
