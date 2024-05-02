@@ -21,8 +21,11 @@ DEFAULT_SUMMARY_DICT = {
 
 def motor_task(arg):
     global motor
+    # while True:
     for _ in range(arg):
         motor.move_cont()
+    motor.ena.off()
+    motor.pul.off()
 
 @app.route("/")
 def home():
