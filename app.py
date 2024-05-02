@@ -1,5 +1,7 @@
+from threading import Thread
 from flask import Flask, render_template, session, redirect, url_for
 from scanner.sushi import Scanner
+from scanner.motor import Motor
 
 FILE_PATH = "static/assets/registered.txt"
 
@@ -17,6 +19,11 @@ DEFAULT_SUMMARY_DICT = {
     "total_price": 0
 }
 
+def motor_task(arg):
+    motor = Motor()
+    for _ in range(arg):
+        motor.move_cont()
+
 @app.route("/")
 def home():
     summary_dict = session.get("summary_dict", {})
@@ -27,8 +34,13 @@ def home():
 
 @app.route("/scan")
 def scan():
-    print(f"Testing...\nOpening file from path: {FILE_PATH}")
-    scanner = Scanner(fp=FILE_PATH, testing=True)
+    # Run linear stage as a thread
+    thread = Thread(target=motor_task, args=(10, ))
+    thread.start()
+
+    # Run scanner
+    print(f"Opening file from path: {FILE_PATH}")
+    scanner = Scanner(fp=FILE_PATH)
     rfid = ""
     while rfid != "q":
         rfid = input()
@@ -37,6 +49,9 @@ def scan():
             break
     session["summary_dict"] = scanner.summary_dict
     print(f"Data added to session: {session['summary_dict']}")
+    
+    # thread.join()
+
     return redirect(url_for("summary"))
 
 @app.route("/summary")
