@@ -20,9 +20,13 @@ DEFAULT_SUMMARY_DICT = {
 }
 
 def motor_task(arg):
-    global motor
+    global motor, stop_threads
     # while True:
     for _ in range(arg):
+        if stop_threads:
+            motor.ena.off()
+            motor.pul.off()
+            break
         motor.move_cont()
     motor.ena.off()
     motor.pul.off()
@@ -37,13 +41,14 @@ def home():
 
 @app.route("/scan")
 def scan():
+    global scanneri, stop_threads
+    stop_threads = False
+
     # Run linear stage as a thread
     thread = Thread(target=motor_task, args=(10, ))
     thread.start()
 
     # Run scanner
-    print(f"Opening file from path: {FILE_PATH}")
-    scanner = Scanner(fp=FILE_PATH)
     rfid = ""
     while rfid != "q":
         rfid = input()
@@ -52,6 +57,7 @@ def scan():
             break
     
     # Exit thread when white card is detected
+    stop_threads = True
     thread.join()
 
     session["summary_dict"] = scanner.summary_dict
@@ -77,7 +83,10 @@ def payment():
 
 @app.route("/reset")
 def reset():
+    global scanner
+
     session["summary_dict"] = DEFAULT_SUMMARY_DICT
+    scanner.summary_dict = DEFAULT_SUMMARY_DICT
     return redirect(url_for("home"))
 
 @app.route("/thankyou")
@@ -94,4 +103,5 @@ def thankyou():
 
 if __name__ == "__main__":
     motor = Motor()
+    scanner = Scanner(fp=FILE_PATH)
     app.run(host="127.0.0.1", port="8000", debug=True)

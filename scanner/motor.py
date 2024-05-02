@@ -5,7 +5,7 @@ from gpiozero import Button, LED
 class Motor:
     def __init__(self) -> None: 
         try:
-            self.pulse_dur = 0.0001
+            self.pulse_dur = 0.0002
             # Declare LEDs
             self.red = LED(17)
             self.green = LED(27)
@@ -28,7 +28,7 @@ class Motor:
         except:
             print("GPIO already initialized")
 
-    def move_cont(self, duration=1):
+    def move_cont(self, duration=2):
         print("Running forward")
         self.run_fwd()
         sleep(duration)
@@ -44,24 +44,24 @@ class Motor:
     def cancel_move2(self):
         self.ena.off()
         self.pul.off()
-        print("BUTTON 6 IS TRIGGERED")
+        # print("BUTTON 6 IS TRIGGERED")
 
     def cancel_move1(self):
         self.ena.off()
         self.pul.off()
-        print("BUTTON 12 IS TRIGGERED")
+        # print("BUTTON 12 IS TRIGGERED")
         
     def run_fwd(self):
         self.ena.on()
         self.pul.blink(self.pulse_dur, self.pulse_dur)
         self.dir.on()
-        print("pass")
+        # print("pass")
         
     def run_bwd(self):
         self.ena.on()
         self.pul.blink(self.pulse_dur, self.pulse_dur)
         self.dir.off()
-        print("pass")
+        # print("pass")
 
 if __name__ == "__main__":
     motor = Motor()
