@@ -20,7 +20,7 @@ DEFAULT_SUMMARY_DICT = {
 }
 
 def motor_task(arg):
-    motor = Motor()
+    global motor
     for _ in range(arg):
         motor.move_cont()
 
@@ -47,11 +47,12 @@ def scan():
         ok = scanner.add_item(rfid)
         if not ok:
             break
-    session["summary_dict"] = scanner.summary_dict
-    print(f"Data added to session: {session['summary_dict']}")
     
     # Exit thread when white card is detected
     thread.join()
+
+    session["summary_dict"] = scanner.summary_dict
+    print(f"Data added to session: {session['summary_dict']}")
 
     return redirect(url_for("summary"))
 
@@ -89,4 +90,5 @@ def thankyou():
 #     return render_template("instruction.html")
 
 if __name__ == "__main__":
+    motor = Motor()
     app.run(host="127.0.0.1", port="8000", debug=True)
