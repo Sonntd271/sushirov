@@ -41,7 +41,7 @@ def home():
 
 @app.route("/scan")
 def scan():
-    global scanneri, stop_threads
+    global scanner, stop_threads
     stop_threads = False
 
     # Run linear stage as a thread

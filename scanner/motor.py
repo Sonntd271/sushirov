@@ -29,15 +29,15 @@ class Motor:
             print("GPIO already initialized")
 
     def move_cont(self, duration=2):
-        print("Running forward")
+        # print("Running forward")
         self.run_fwd()
         sleep(duration)
-        print("Running backward")
+        # print("Running backward")
         self.run_bwd()
         sleep(0.1)
         self.run_bwd()
         sleep(duration)
-        print("Release switch")
+        # print("Release switch")
         self.run_fwd()
         sleep(0.1)
         
