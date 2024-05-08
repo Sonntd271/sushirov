@@ -2,7 +2,7 @@ from threading import Thread
 from flask import Flask, render_template, session, redirect, url_for
 from scanner.sushi import Scanner
 from scanner.motor import Motor
-
+import time
 FILE_PATH = "static/assets/registered.txt"
 
 app = Flask(__name__, static_url_path='/static')
@@ -41,24 +41,29 @@ def home():
 
 @app.route("/scan")
 def scan():
+    print("starting scan thread")
     global scanner, stop_threads
     stop_threads = False
 
     # Run linear stage as a thread
     thread = Thread(target=motor_task, args=(10, ))
     thread.start()
-
+    # print("Scan thread started")
+    
     # Run scanner
     rfid = ""
-    while rfid != "q":
+    while rfid != "q" or rfid != "1305477122":
         rfid = input()
         ok = scanner.add_item(rfid)
         if not ok:
             break
     
+    # print("Ended Scan loop")
     # Exit thread when white card is detected
     stop_threads = True
+    time.sleep(0.5)
     thread.join()
+    time.sleep(.5)
 
     session["summary_dict"] = scanner.summary_dict
     print(f"Data added to session: {session['summary_dict']}")
@@ -86,7 +91,10 @@ def reset():
     global scanner
 
     session["summary_dict"] = DEFAULT_SUMMARY_DICT
-    scanner.summary_dict = DEFAULT_SUMMARY_DICT
+    scanner.reset_total()
+
+    print(scanner.summary_dict)
+
     return redirect(url_for("home"))
 
 @app.route("/thankyou")
